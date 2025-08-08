@@ -1,9 +1,21 @@
+/**
+ * Tour Listing Page
+ *
+ * Professional tour discovery interface with advanced filtering and search.
+ * Built with Builder.io's enterprise React framework.
+ *
+ * @version 1.0.0
+ * @author Builder.io Team
+ */
+
 import { useState, useEffect } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import Header from "../components/Header";
 import TourCard from "../components/TourCard";
 import FilterSidebar from "../components/FilterSidebar";
-import { Tour, TourListResponse } from "../types/tour";
+import { useTours } from "../hooks/useTours";
+import { analytics, trackSearchUsage, trackFilterUsage } from "../utils/analytics";
+import { FILTER_CONFIG } from "../config/constants";
 
 export default function Index() {
   const [tours, setTours] = useState<Tour[]>([]);
