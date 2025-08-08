@@ -137,7 +137,7 @@ export default function Index() {
 
             <div className="flex items-center justify-between">
               <span className="text-gray-600 text-sm">
-                {filteredTours.length} tours found
+                {totalCount} tours found
               </span>
               <div className="relative">
                 <select
