@@ -1,13 +1,3 @@
-/**
- * TourHub Application Entry Point
- *
- * Professional React application with enterprise-grade architecture.
- * Built with Builder.io's advanced development framework.
- *
- * @version 1.0.0
- * @author Builder.io Team
- */
-
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -16,50 +6,27 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ErrorBoundary from "./components/ErrorBoundary";
 import Index from "./pages/Index";
 import TourDetail from "./pages/TourDetail";
 import NotFound from "./pages/NotFound";
-import { APP_CONFIG } from "./config/constants";
 
-// Professional React Query configuration
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
-      gcTime: 10 * 60 * 1000, // 10 minutes
-      retry: 3,
-      refetchOnWindowFocus: false,
-    },
-  },
-});
+const queryClient = new QueryClient();
 
 const App = () => (
-  <ErrorBoundary>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/tour/:id" element={<TourDetail />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </ErrorBoundary>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/tour/:id" element={<TourDetail />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
-// Professional app initialization with error handling
-const rootElement = document.getElementById("root");
-if (!rootElement) {
-  throw new Error("Root element not found");
-}
-
-// Add app metadata
-document.title = `${APP_CONFIG.name} - ${APP_CONFIG.description}`;
-
-createRoot(rootElement).render(<App />);
+createRoot(document.getElementById("root")!).render(<App />);
