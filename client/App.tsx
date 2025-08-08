@@ -53,4 +53,13 @@ const App = () => (
   </ErrorBoundary>
 );
 
-createRoot(document.getElementById("root")!).render(<App />);
+// Professional app initialization with error handling
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  throw new Error("Root element not found");
+}
+
+// Add app metadata
+document.title = `${APP_CONFIG.name} - ${APP_CONFIG.description}`;
+
+createRoot(rootElement).render(<App />);
