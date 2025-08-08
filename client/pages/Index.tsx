@@ -13,6 +13,7 @@ export default function Index() {
   const [sortBy, setSortBy] = useState("name");
   const [durationFilter, setDurationFilter] = useState({ min: 1, max: 30 });
   const [priceFilter, setPriceFilter] = useState({ min: 0, max: 5000 });
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   useEffect(() => {
     fetchTours();
