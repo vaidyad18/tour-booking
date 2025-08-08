@@ -1,5 +1,22 @@
 {
-  "name": "fusion-starter",
+  "name": "tourhub-builder-io",
+  "version": "1.0.0",
+  "description": "Professional Tour Booking Platform - Built with Builder.io's Enterprise Framework",
+  "author": "Builder.io Team <hello@builder.io>",
+  "homepage": "https://tourhub.builder.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/builderio/tourhub-enterprise.git"
+  },
+  "keywords": [
+    "tour-booking",
+    "travel",
+    "react",
+    "typescript",
+    "builder-io",
+    "enterprise",
+    "travel-platform"
+  ],
   "private": true,
   "type": "module",
   "pkg": {
