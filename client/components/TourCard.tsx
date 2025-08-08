@@ -24,6 +24,26 @@ export default function TourCard({ tour }: TourCardProps) {
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     setIsWishlisted(!isWishlisted);
+
+    // Track wishlist interaction
+    trackTourClick({
+      tourId: tour.id,
+      tourTitle: tour.title,
+      price: tour.discountedPrice,
+      duration: tour.duration,
+      timestamp: new Date().toISOString()
+    });
+  };
+
+  const handleViewDetails = () => {
+    // Track tour detail view
+    trackTourClick({
+      tourId: tour.id,
+      tourTitle: tour.title,
+      price: tour.discountedPrice,
+      duration: tour.duration,
+      timestamp: new Date().toISOString()
+    });
   };
 
   return (
