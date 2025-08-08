@@ -161,13 +161,18 @@ export default function Index() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <div className="flex">
-        <FilterSidebar
-          onDurationChange={(min, max) => setDurationFilter({ min, max })}
-          onPriceChange={(min, max) => setPriceFilter({ min, max })}
-        />
-        
-        <div className="flex-1 p-6">
+      <div className="flex relative">
+        <div className={`${isFilterOpen ? 'fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden' : ''}`} onClick={() => setIsFilterOpen(false)} />
+        <div className={`${isFilterOpen ? 'fixed left-0 top-0 z-50 h-full overflow-y-auto' : 'hidden'} md:relative md:block`}>
+          <FilterSidebar
+            onDurationChange={(min, max) => setDurationFilter({ min, max })}
+            onPriceChange={(min, max) => setPriceFilter({ min, max })}
+            isOpen={isFilterOpen}
+            onClose={() => setIsFilterOpen(false)}
+          />
+        </div>
+
+        <div className="flex-1 p-4 md:p-6">
           {/* Search and Sort Bar */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 space-y-4 lg:space-y-0">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
