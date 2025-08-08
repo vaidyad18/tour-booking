@@ -97,7 +97,9 @@ export default function DualRangeSlider({
         
         {/* Min handle */}
         <div
-          className="absolute w-4 h-4 bg-white border-2 border-red-500 rounded-full cursor-grab active:cursor-grabbing shadow-sm hover:shadow-md transition-shadow"
+          className={`absolute w-4 h-4 bg-white border-2 border-red-500 rounded-full cursor-grab active:cursor-grabbing shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-125 hover:border-red-600 ${
+            isDragging === 'min' ? 'scale-125 shadow-lg border-red-600 animate-pulse-glow' : ''
+          }`}
           style={{
             left: `${minPosition}%`,
             top: '50%',
@@ -105,10 +107,12 @@ export default function DualRangeSlider({
           }}
           onMouseDown={handleMouseDown('min')}
         />
-        
+
         {/* Max handle */}
         <div
-          className="absolute w-4 h-4 bg-white border-2 border-red-500 rounded-full cursor-grab active:cursor-grabbing shadow-sm hover:shadow-md transition-shadow"
+          className={`absolute w-4 h-4 bg-white border-2 border-red-500 rounded-full cursor-grab active:cursor-grabbing shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-125 hover:border-red-600 ${
+            isDragging === 'max' ? 'scale-125 shadow-lg border-red-600 animate-pulse-glow' : ''
+          }`}
           style={{
             left: `${maxPosition}%`,
             top: '50%',
