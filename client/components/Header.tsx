@@ -8,13 +8,37 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-red-500 rounded-sm flex items-center justify-center">
-                <span className="text-white font-bold text-sm">map</span>
+            <div className="flex items-center">
+              <div className="relative">
+                <svg width="32" height="32" viewBox="0 0 32 32" className="mr-2">
+                  {/* Red background square */}
+                  <rect width="32" height="32" rx="2" fill="#EF4444"/>
+                  {/* Map icon */}
+                  <path
+                    d="M8 12L12 10L20 12L24 10V22L20 24L12 22L8 24V12Z"
+                    fill="white"
+                    stroke="white"
+                    strokeWidth="1"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M12 10V22M20 12V24"
+                    stroke="#EF4444"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </div>
-              <span className="text-gray-900 font-semibold text-lg">
-                my tour
-              </span>
+              <div className="flex flex-col">
+                <div className="flex items-baseline">
+                  <span className="text-gray-900 font-bold text-base tracking-tight">
+                    map
+                  </span>
+                  <span className="text-gray-900 font-medium text-base ml-1">
+                    my tour
+                  </span>
+                </div>
+              </div>
             </div>
           </Link>
 
