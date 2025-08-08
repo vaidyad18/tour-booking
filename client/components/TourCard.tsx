@@ -58,8 +58,9 @@ export default function TourCard({ tour }: TourCardProps) {
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
       <div className="relative">
         <img
-          src={tour.image}
+          src={imageError ? defaultImage : tour.image}
           alt={tour.title}
+          onError={handleImageError}
           className="w-full h-48 object-cover"
         />
         {/* Discount Badge */}
