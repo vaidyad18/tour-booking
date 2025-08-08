@@ -6,7 +6,14 @@ interface FilterSidebarProps {
   onPriceChange: (min: number, max: number) => void;
 }
 
-export default function FilterSidebar({ onDurationChange, onPriceChange }: FilterSidebarProps) {
+interface FilterSidebarProps {
+  onDurationChange: (min: number, max: number) => void;
+  onPriceChange: (min: number, max: number) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+export default function FilterSidebar({ onDurationChange, onPriceChange, isOpen = true, onClose }: FilterSidebarProps) {
   const [isDurationOpen, setIsDurationOpen] = useState(true);
   const [isPriceOpen, setIsPriceOpen] = useState(true);
   const [durationRange, setDurationRange] = useState({ min: 1, max: 30 });
