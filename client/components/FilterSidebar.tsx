@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import DualRangeSlider from "./DualRangeSlider";
 
 interface FilterSidebarProps {
   onDurationChange: (min: number, max: number) => void;
