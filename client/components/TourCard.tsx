@@ -39,27 +39,29 @@ export default function TourCard({ tour }: TourCardProps) {
           />
         </button>
       </div>
-      
+
       <div className="p-4">
         <h3 className="font-semibold text-gray-900 text-lg mb-2">{tour.title}</h3>
         <p className="text-gray-600 text-sm mb-3">{tour.description}</p>
-        
+
         <div className="flex items-center text-gray-500 text-sm mb-4">
           <Clock className="w-4 h-4 mr-1" />
           <span>{tour.duration}</span>
         </div>
-        
+
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <span className="text-2xl font-bold text-gray-900">
-              ${tour.discountedPrice}
-            </span>
-            <span className="text-sm text-gray-500 line-through">
-              ${tour.actualPrice}
-            </span>
+          <div className="flex flex-col">
+            <div className="flex items-baseline space-x-2">
+              <span className="text-2xl font-bold text-gray-900">
+                ${tour.discountedPrice}
+              </span>
+              <span className="text-sm text-gray-500 line-through">
+                ${tour.actualPrice}
+              </span>
+            </div>
             <span className="text-xs text-gray-500">per person</span>
           </div>
-          
+
           <Link
             to={`/tour/${tour.id}`}
             className="bg-red-500 text-white px-4 py-2 rounded text-sm font-medium hover:bg-red-600 transition-colors"
