@@ -8,7 +8,11 @@ interface BookingModalProps {
   tourTitle: string;
 }
 
-export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModalProps) {
+export default function BookingModal({
+  isOpen,
+  onClose,
+  tourTitle,
+}: BookingModalProps) {
   const [formData, setFormData] = useState<BookingForm>({
     name: "",
     email: "",
@@ -16,19 +20,20 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
     phone: "",
     addOns: "",
     numberOfTickets: 1,
-    additionalInfo: ""
+    additionalInfo: "",
   });
 
   const [errors, setErrors] = useState<Partial<BookingForm>>({});
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     const newErrors: Partial<BookingForm> = {};
     if (!formData.name) newErrors.name = "Name is required";
     if (!formData.email) newErrors.email = "Email is required";
-    if (formData.email !== formData.confirmEmail) newErrors.confirmEmail = "Emails don't match";
+    if (formData.email !== formData.confirmEmail)
+      newErrors.confirmEmail = "Emails don't match";
     if (!formData.phone) newErrors.phone = "Phone is required";
 
     if (Object.keys(newErrors).length > 0) {
@@ -41,16 +46,20 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
       ...formData,
       tourTitle,
       bookingDate: new Date().toISOString(),
-      bookingId: `BOOK-${Date.now()}`
+      bookingId: `BOOK-${Date.now()}`,
     };
-    
-    const existingBookings = JSON.parse(localStorage.getItem("tourBookings") || "[]");
+
+    const existingBookings = JSON.parse(
+      localStorage.getItem("tourBookings") || "[]",
+    );
     existingBookings.push(bookingData);
     localStorage.setItem("tourBookings", JSON.stringify(existingBookings));
 
-    alert("Booking submitted successfully! Your booking details have been saved.");
+    alert(
+      "Booking submitted successfully! Your booking details have been saved.",
+    );
     onClose();
-    
+
     // Reset form
     setFormData({
       name: "",
@@ -59,7 +68,7 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
       phone: "",
       addOns: "",
       numberOfTickets: 1,
-      additionalInfo: ""
+      additionalInfo: "",
     });
     setErrors({});
   };
@@ -81,8 +90,8 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
           </div>
 
           <p className="text-gray-600 text-sm mb-6">
-            Ex officio sequi et quos praesentium in nostrum labore nam rerum iusto
-            aut magni nesciunt? Quo quidem neque iste expedita est dolor.
+            Ex officio sequi et quos praesentium in nostrum labore nam rerum
+            iusto aut magni nesciunt? Quo quidem neque iste expedita est dolor.
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -91,10 +100,14 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
                 type="text"
                 placeholder="Name"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
-              {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+              )}
             </div>
 
             <div>
@@ -102,10 +115,14 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
                 type="email"
                 placeholder="Email"
                 value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, email: e.target.value })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
-              {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
 
             <div>
@@ -113,10 +130,16 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
                 type="email"
                 placeholder="Confirm Email"
                 value={formData.confirmEmail}
-                onChange={(e) => setFormData({ ...formData, confirmEmail: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, confirmEmail: e.target.value })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
-              {errors.confirmEmail && <p className="text-red-500 text-xs mt-1">{errors.confirmEmail}</p>}
+              {errors.confirmEmail && (
+                <p className="text-red-500 text-xs mt-1">
+                  {errors.confirmEmail}
+                </p>
+              )}
             </div>
 
             <div>
@@ -124,10 +147,14 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
                 type="tel"
                 placeholder="Phone"
                 value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
-              {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+              {errors.phone && (
+                <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+              )}
             </div>
 
             <div>
@@ -135,7 +162,9 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
                 type="text"
                 placeholder="Add-ons"
                 value={formData.addOns}
-                onChange={(e) => setFormData({ ...formData, addOns: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, addOns: e.target.value })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
             </div>
@@ -146,7 +175,12 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
                 placeholder="Number of tickets"
                 min="1"
                 value={formData.numberOfTickets}
-                onChange={(e) => setFormData({ ...formData, numberOfTickets: parseInt(e.target.value) })}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    numberOfTickets: parseInt(e.target.value),
+                  })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
             </div>
@@ -156,7 +190,9 @@ export default function BookingModal({ isOpen, onClose, tourTitle }: BookingModa
                 placeholder="Additional information or special requests..."
                 rows={4}
                 value={formData.additionalInfo}
-                onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, additionalInfo: e.target.value })
+                }
                 className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
               />
             </div>

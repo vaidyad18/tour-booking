@@ -1,9 +1,9 @@
 /**
  * Analytics Utilities
- * 
+ *
  * Professional event tracking and user behavior analysis.
  * Implements Builder.io's enterprise analytics patterns.
- * 
+ *
  * @version 1.0.0
  * @author Builder.io Team
  */
@@ -30,7 +30,7 @@ class AnalyticsService {
   private events: AnalyticsEvent[] = [];
 
   constructor() {
-    this.isEnabled = process.env.NODE_ENV === 'production';
+    this.isEnabled = process.env.NODE_ENV === "production";
   }
 
   /**
@@ -38,7 +38,7 @@ class AnalyticsService {
    */
   track(event: AnalyticsEvent): void {
     if (!this.isEnabled) {
-      console.log('📊 Analytics Event:', event);
+      console.log("📊 Analytics Event:", event);
       return;
     }
 
@@ -48,8 +48,8 @@ class AnalyticsService {
         ...event.properties,
         timestamp: new Date().toISOString(),
         userAgent: navigator.userAgent,
-        url: window.location.href
-      }
+        url: window.location.href,
+      },
     });
 
     // In production, this would send to your analytics service
@@ -62,16 +62,16 @@ class AnalyticsService {
    */
   trackTourEvent(action: string, tourData: TourAnalytics): void {
     this.track({
-      event: 'tour_interaction',
-      category: 'Tours',
+      event: "tour_interaction",
+      category: "Tours",
       action,
       label: tourData.tourTitle,
       value: tourData.price,
       properties: {
         tourId: tourData.tourId,
         duration: tourData.duration,
-        price: tourData.price
-      }
+        price: tourData.price,
+      },
     });
   }
 
@@ -80,15 +80,15 @@ class AnalyticsService {
    */
   trackPageView(page: string, title?: string): void {
     this.track({
-      event: 'page_view',
-      category: 'Navigation',
-      action: 'view',
+      event: "page_view",
+      category: "Navigation",
+      action: "view",
       label: page,
       properties: {
         page,
         title: title || document.title,
-        referrer: document.referrer
-      }
+        referrer: document.referrer,
+      },
     });
   }
 
@@ -97,15 +97,15 @@ class AnalyticsService {
    */
   trackSearch(query: string, resultsCount: number): void {
     this.track({
-      event: 'search',
-      category: 'Search',
-      action: 'query',
+      event: "search",
+      category: "Search",
+      action: "query",
       label: query,
       value: resultsCount,
       properties: {
         query,
-        resultsCount
-      }
+        resultsCount,
+      },
     });
   }
 
@@ -114,48 +114,51 @@ class AnalyticsService {
    */
   trackFilter(filterType: string, filterValue: any): void {
     this.track({
-      event: 'filter_applied',
-      category: 'Filters',
+      event: "filter_applied",
+      category: "Filters",
       action: filterType,
       label: String(filterValue),
       properties: {
         filterType,
-        filterValue
-      }
+        filterValue,
+      },
     });
   }
 
   /**
    * Track booking events
    */
-  trackBooking(stage: 'started' | 'completed' | 'abandoned', tourData: TourAnalytics): void {
+  trackBooking(
+    stage: "started" | "completed" | "abandoned",
+    tourData: TourAnalytics,
+  ): void {
     this.track({
-      event: 'booking',
-      category: 'Bookings',
+      event: "booking",
+      category: "Bookings",
       action: stage,
       label: tourData.tourTitle,
       value: tourData.price,
       properties: {
         ...tourData,
-        stage
-      }
+        stage,
+      },
     });
   }
 
   /**
    * Track performance metrics
    */
-  trackPerformance(metric: string, value: number, unit: string = 'ms'): void {
+  trackPerformance(metric: string, value: number, unit: string = "ms"): void {
     this.track({
-      event: 'performance',
-      category: 'Performance',
+      event: "performance",
+      category: "Performance",
       action: metric,
       value,
       properties: {
         metric,
         value,
-        unit
-      }
+        unit,
+      },
     });
   }
 
@@ -168,13 +171,13 @@ class AnalyticsService {
     // - Mixpanel
     // - Amplitude
     // - Custom analytics endpoint
-    
-    if (typeof gtag !== 'undefined') {
-      gtag('event', event.action, {
+
+    if (typeof gtag !== "undefined") {
+      gtag("event", event.action, {
         event_category: event.category,
         event_label: event.label,
         value: event.value,
-        custom_parameters: event.properties
+        custom_parameters: event.properties,
       });
     }
   }
@@ -185,7 +188,7 @@ class AnalyticsService {
   getSummary(): { totalEvents: number; categories: string[] } {
     return {
       totalEvents: this.events.length,
-      categories: [...new Set(this.events.map(e => e.category))]
+      categories: [...new Set(this.events.map((e) => e.category))],
     };
   }
 }
@@ -195,19 +198,19 @@ export const analytics = new AnalyticsService();
 
 // Convenient tracking functions
 export const trackTourView = (tourData: TourAnalytics) => {
-  analytics.trackTourEvent('view', tourData);
+  analytics.trackTourEvent("view", tourData);
 };
 
 export const trackTourClick = (tourData: TourAnalytics) => {
-  analytics.trackTourEvent('click', tourData);
+  analytics.trackTourEvent("click", tourData);
 };
 
 export const trackBookingStart = (tourData: TourAnalytics) => {
-  analytics.trackBooking('started', tourData);
+  analytics.trackBooking("started", tourData);
 };
 
 export const trackBookingComplete = (tourData: TourAnalytics) => {
-  analytics.trackBooking('completed', tourData);
+  analytics.trackBooking("completed", tourData);
 };
 
 export const trackSearchUsage = (query: string, resultsCount: number) => {

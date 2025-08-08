@@ -9,12 +9,15 @@ export default function TourDetail() {
   const { id } = useParams();
   const [tour, setTour] = useState<TourDetailType | null>(null);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState<"overview" | "itinerary" | "inclusions">("overview");
+  const [activeTab, setActiveTab] = useState<
+    "overview" | "itinerary" | "inclusions"
+  >("overview");
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [imageError, setImageError] = useState(false);
 
   // Default fallback image
-  const defaultImage = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=400&fit=crop&crop=center";
+  const defaultImage =
+    "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=400&fit=crop&crop=center";
 
   useEffect(() => {
     fetchTourDetail();
@@ -37,33 +40,39 @@ export default function TourDetail() {
         duration: "14Days/13Night",
         actualPrice: 1200,
         discountedPrice: 1000,
-        overview: "Experience the majestic beauty of the Himalayas on this incredible 14-day trekking adventure. This journey will take you through some of the most breathtaking landscapes on Earth, including ancient villages, pristine forests, and towering peaks. You'll have the opportunity to immerse yourself in local culture, witness stunning sunrises over snow-capped mountains, and challenge yourself with high-altitude trekking.",
+        overview:
+          "Experience the majestic beauty of the Himalayas on this incredible 14-day trekking adventure. This journey will take you through some of the most breathtaking landscapes on Earth, including ancient villages, pristine forests, and towering peaks. You'll have the opportunity to immerse yourself in local culture, witness stunning sunrises over snow-capped mountains, and challenge yourself with high-altitude trekking.",
         itinerary: [
           {
             day: 1,
             title: "Arrival in Kathmandu",
-            description: "Welcome to Nepal! Transfer to hotel and trek briefing."
+            description:
+              "Welcome to Nepal! Transfer to hotel and trek briefing.",
           },
           {
             day: 2,
             title: "Fly to Lukla & Trek to Phakding",
-            description: "Morning flight to Lukla (2,840m) followed by a gentle trek to Phakding."
+            description:
+              "Morning flight to Lukla (2,840m) followed by a gentle trek to Phakding.",
           },
           {
             day: 3,
             title: "Trek to Namche Bazaar",
-            description: "Trek through the entrance to Sagarmatha National Park to the famous Sherpa town of Namche Bazaar."
+            description:
+              "Trek through the entrance to Sagarmatha National Park to the famous Sherpa town of Namche Bazaar.",
           },
           {
             day: 4,
             title: "Acclimatization Day in Namche",
-            description: "Rest day for acclimatization with optional hikes around the area."
+            description:
+              "Rest day for acclimatization with optional hikes around the area.",
           },
           {
             day: 5,
             title: "Trek to Tengboche",
-            description: "Trek to the famous monastery of Tengboche with spectacular mountain views."
-          }
+            description:
+              "Trek to the famous monastery of Tengboche with spectacular mountain views.",
+          },
         ],
         inclusions: [
           "Professional trekking guide",
@@ -73,7 +82,7 @@ export default function TourDetail() {
           "Sagarmatha National Park entry permits",
           "TIMS card",
           "Airport transfers",
-          "First aid kit"
+          "First aid kit",
         ],
         exclusions: [
           "International flights",
@@ -82,7 +91,7 @@ export default function TourDetail() {
           "Personal trekking equipment",
           "Extra drinks and snacks",
           "Tips for guide and porter",
-          "Emergency evacuation costs"
+          "Emergency evacuation costs",
         ],
         location: {
           country: "Nepal",
@@ -91,10 +100,10 @@ export default function TourDetail() {
           peopleCount: "4-16 People",
           difficulty: "MODERATE",
           startDate: "10/1/2025",
-          endDate: "10/14/2025"
-        }
+          endDate: "10/14/2025",
+        },
       };
-      
+
       setTour(mockTourDetail);
     } catch (error) {
       console.error("Error fetching tour detail:", error);
@@ -124,7 +133,10 @@ export default function TourDetail() {
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
             <p className="text-gray-600">Tour not found</p>
-            <Link to="/" className="text-red-500 hover:text-red-600 mt-2 inline-block">
+            <Link
+              to="/"
+              className="text-red-500 hover:text-red-600 mt-2 inline-block"
+            >
               Back to Tours
             </Link>
           </div>
@@ -136,11 +148,11 @@ export default function TourDetail() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Back Button */}
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="flex items-center text-gray-600 hover:text-gray-900 mb-6"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
@@ -202,7 +214,7 @@ export default function TourDetail() {
                 {[
                   { key: "overview", label: "Overview" },
                   { key: "itinerary", label: "Itinerary" },
-                  { key: "inclusions", label: "Inclusions" }
+                  { key: "inclusions", label: "Inclusions" },
                 ].map((tab) => (
                   <button
                     key={tab.key}
@@ -224,30 +236,52 @@ export default function TourDetail() {
               <div className="lg:col-span-2">
                 {activeTab === "overview" && (
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">About This Tour</h3>
-                    <p className="text-gray-600 leading-relaxed">{tour.overview}</p>
-                    
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                      About This Tour
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {tour.overview}
+                    </p>
+
                     <div className="mt-8">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Tour Information</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                        Tour Information
+                      </h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <span className="text-sm text-gray-500">Duration</span>
+                          <span className="text-sm text-gray-500">
+                            Duration
+                          </span>
                           <p className="font-medium">{tour.duration}</p>
                         </div>
                         <div>
-                          <span className="text-sm text-gray-500">Group Size</span>
-                          <p className="font-medium">{tour.location.peopleCount}</p>
+                          <span className="text-sm text-gray-500">
+                            Group Size
+                          </span>
+                          <p className="font-medium">
+                            {tour.location.peopleCount}
+                          </p>
                         </div>
                         <div>
-                          <span className="text-sm text-gray-500">Difficulty</span>
-                          <p className="font-medium">{tour.location.difficulty}</p>
+                          <span className="text-sm text-gray-500">
+                            Difficulty
+                          </span>
+                          <p className="font-medium">
+                            {tour.location.difficulty}
+                          </p>
                         </div>
                         <div>
-                          <span className="text-sm text-gray-500">Start Date</span>
-                          <p className="font-medium">{tour.location.startDate}</p>
+                          <span className="text-sm text-gray-500">
+                            Start Date
+                          </span>
+                          <p className="font-medium">
+                            {tour.location.startDate}
+                          </p>
                         </div>
                         <div>
-                          <span className="text-sm text-gray-500">End Date</span>
+                          <span className="text-sm text-gray-500">
+                            End Date
+                          </span>
                           <p className="font-medium">{tour.location.endDate}</p>
                         </div>
                       </div>
@@ -257,14 +291,21 @@ export default function TourDetail() {
 
                 {activeTab === "itinerary" && (
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-6">Detailed Itinerary</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                      Detailed Itinerary
+                    </h3>
                     <div className="space-y-6">
                       {tour.itinerary.map((day) => (
-                        <div key={day.day} className="border-l-2 border-red-500 pl-4">
+                        <div
+                          key={day.day}
+                          className="border-l-2 border-red-500 pl-4"
+                        >
                           <h4 className="font-semibold text-gray-900">
                             Day {day.day}: {day.title}
                           </h4>
-                          <p className="text-gray-600 mt-1">{day.description}</p>
+                          <p className="text-gray-600 mt-1">
+                            {day.description}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -275,7 +316,9 @@ export default function TourDetail() {
                   <div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                       <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">Inclusions</h3>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                          Inclusions
+                        </h3>
                         <ul className="space-y-2">
                           {tour.inclusions.map((item, index) => (
                             <li key={index} className="flex items-start">
@@ -285,9 +328,11 @@ export default function TourDetail() {
                           ))}
                         </ul>
                       </div>
-                      
+
                       <div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">Exclusions</h3>
+                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                          Exclusions
+                        </h3>
                         <ul className="space-y-2">
                           {tour.exclusions.map((item, index) => (
                             <li key={index} className="flex items-start">
@@ -305,19 +350,27 @@ export default function TourDetail() {
               {/* Sidebar */}
               <div className="lg:col-span-1">
                 <div className="bg-gray-50 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Location Details</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    Location Details
+                  </h3>
                   <div className="space-y-4">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Country</span>
-                      <span className="font-medium">{tour.location.country}</span>
+                      <span className="font-medium">
+                        {tour.location.country}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Start Location</span>
-                      <span className="font-medium">{tour.location.startLocation}</span>
+                      <span className="font-medium">
+                        {tour.location.startLocation}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">End Location</span>
-                      <span className="font-medium">{tour.location.endLocation}</span>
+                      <span className="font-medium">
+                        {tour.location.endLocation}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Region</span>

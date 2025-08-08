@@ -14,19 +14,25 @@ import Header from "../components/Header";
 import TourCard from "../components/TourCard";
 import FilterSidebar from "../components/FilterSidebar";
 import { useTours } from "../hooks/useTours";
-import { analytics, trackSearchUsage, trackFilterUsage } from "../utils/analytics";
+import {
+  analytics,
+  trackSearchUsage,
+  trackFilterUsage,
+} from "../utils/analytics";
 import { FILTER_CONFIG } from "../config/constants";
 
 export default function Index() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState<"name" | "price-low" | "price-high">("name");
+  const [sortBy, setSortBy] = useState<"name" | "price-low" | "price-high">(
+    "name",
+  );
   const [durationFilter, setDurationFilter] = useState({
     min: FILTER_CONFIG.duration.min,
-    max: FILTER_CONFIG.duration.max
+    max: FILTER_CONFIG.duration.max,
   });
   const [priceFilter, setPriceFilter] = useState({
     min: FILTER_CONFIG.price.min,
-    max: FILTER_CONFIG.price.max
+    max: FILTER_CONFIG.price.max,
   });
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -35,12 +41,12 @@ export default function Index() {
     searchQuery,
     sortBy,
     durationFilter,
-    priceFilter
+    priceFilter,
   });
 
   // Track page view on mount
   useEffect(() => {
-    analytics.trackPageView('/', 'Tour Listings');
+    analytics.trackPageView("/", "Tour Listings");
   }, []);
 
   // Track search usage
@@ -55,25 +61,34 @@ export default function Index() {
 
   // Track filter usage
   useEffect(() => {
-    if (durationFilter.min !== FILTER_CONFIG.duration.min || durationFilter.max !== FILTER_CONFIG.duration.max) {
-      trackFilterUsage('duration', `${durationFilter.min}-${durationFilter.max}`);
+    if (
+      durationFilter.min !== FILTER_CONFIG.duration.min ||
+      durationFilter.max !== FILTER_CONFIG.duration.max
+    ) {
+      trackFilterUsage(
+        "duration",
+        `${durationFilter.min}-${durationFilter.max}`,
+      );
     }
   }, [durationFilter]);
 
   useEffect(() => {
-    if (priceFilter.min !== FILTER_CONFIG.price.min || priceFilter.max !== FILTER_CONFIG.price.max) {
-      trackFilterUsage('price', `${priceFilter.min}-${priceFilter.max}`);
+    if (
+      priceFilter.min !== FILTER_CONFIG.price.min ||
+      priceFilter.max !== FILTER_CONFIG.price.max
+    ) {
+      trackFilterUsage("price", `${priceFilter.min}-${priceFilter.max}`);
     }
   }, [priceFilter]);
 
   // Professional search handler with debouncing
   const handleSearch = () => {
     analytics.track({
-      event: 'search_action',
-      category: 'Search',
-      action: 'manual_search',
+      event: "search_action",
+      category: "Search",
+      action: "manual_search",
       label: searchQuery,
-      value: totalCount
+      value: totalCount,
     });
   };
 
@@ -87,8 +102,12 @@ export default function Index() {
               <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 mx-auto mb-4"></div>
               <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-500 border-t-transparent absolute top-0 left-1/2 transform -translate-x-1/2"></div>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">Loading Amazing Tours</h3>
-            <p className="text-gray-600">Discovering the world's best destinations...</p>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Loading Amazing Tours
+            </h3>
+            <p className="text-gray-600">
+              Discovering the world's best destinations...
+            </p>
           </div>
         </div>
       </div>
@@ -100,8 +119,13 @@ export default function Index() {
       <Header />
 
       <div className="flex relative">
-        <div className={`${isFilterOpen ? 'fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden' : ''}`} onClick={() => setIsFilterOpen(false)} />
-        <div className={`${isFilterOpen ? 'fixed left-0 top-0 z-50 h-full overflow-y-auto' : 'hidden'} md:relative md:block`}>
+        <div
+          className={`${isFilterOpen ? "fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden" : ""}`}
+          onClick={() => setIsFilterOpen(false)}
+        />
+        <div
+          className={`${isFilterOpen ? "fixed left-0 top-0 z-50 h-full overflow-y-auto" : "hidden"} md:relative md:block`}
+        >
           <FilterSidebar
             onDurationChange={(min, max) => setDurationFilter({ min, max })}
             onPriceChange={(min, max) => setPriceFilter({ min, max })}
@@ -166,8 +190,12 @@ export default function Index() {
 
           {filteredTours.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No tours match your criteria</p>
-              <p className="text-gray-400 text-sm mt-2">Try adjusting your filters or search terms</p>
+              <p className="text-gray-500 text-lg">
+                No tours match your criteria
+              </p>
+              <p className="text-gray-400 text-sm mt-2">
+                Try adjusting your filters or search terms
+              </p>
             </div>
           )}
         </div>

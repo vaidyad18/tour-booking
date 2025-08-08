@@ -9,12 +9,14 @@ A cutting-edge tour booking platform featuring real-time filtering, interactive 
 ## ✨ Features
 
 ### 🎯 Core Functionality
+
 - **Advanced Tour Search** - Real-time filtering with dynamic price and duration ranges
 - **Interactive Booking System** - Streamlined reservation flow with form validation
 - **Responsive Design** - Optimized for all devices and screen sizes
 - **Modern UI/UX** - Clean, intuitive interface with smooth animations
 
 ### 🛠️ Technical Highlights
+
 - **React 18** with TypeScript for type-safe development
 - **Vite** for lightning-fast development and building
 - **TailwindCSS** for modern, responsive styling
@@ -68,12 +70,14 @@ shared/
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary**: `#EF4444` (Red-500) - CTA buttons, active states
 - **Secondary**: `#6B7280` (Gray-500) - Text, borders
 - **Background**: `#F9FAFB` (Gray-50) - Page background
 - **Surface**: `#FFFFFF` - Cards, modals
 
 ### Typography
+
 - **Headings**: `font-semibold` with hierarchical sizing
 - **Body**: `text-gray-600` for readability
 - **Labels**: `text-sm text-gray-500` for metadata
@@ -81,6 +85,7 @@ shared/
 ## 🔧 Configuration
 
 ### Environment Variables
+
 ```env
 VITE_API_BASE_URL=https://dummyjson.com
 VITE_APP_NAME=TourHub
@@ -88,6 +93,7 @@ VITE_APP_VERSION=1.0.0
 ```
 
 ### Build Optimization
+
 - **Code Splitting** - Automatic route-based splitting
 - **Tree Shaking** - Dead code elimination
 - **Asset Optimization** - Image and bundle optimization
@@ -128,6 +134,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🏗️ Built with Builder.io
 
 This project showcases the power of Builder.io's modern development framework, featuring:
+
 - Enterprise-grade component architecture
 - Advanced state management patterns
 - Professional UI/UX design principles

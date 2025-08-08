@@ -1,7 +1,7 @@
 # 🏗️ TourHub Architecture Documentation
 
 **Enterprise-Grade Tour Booking Platform**  
-*Built with Builder.io's Advanced Development Framework*
+_Built with Builder.io's Advanced Development Framework_
 
 ## 📋 Table of Contents
 
@@ -80,10 +80,12 @@ App (Error Boundary + Providers)
 ### Component Design Patterns
 
 1. **Container/Presentational Pattern**
+
    - Pages act as containers managing state and logic
    - Components focus purely on presentation
 
 2. **Custom Hooks Pattern**
+
    - `useTours` - Data fetching and filtering logic
    - Separation of concerns between UI and business logic
 
@@ -117,9 +119,11 @@ Analytics Tracking
 ### Key Data Flows
 
 1. **Tour Discovery Flow**
+
    - User applies filters → Hook processes data → UI updates → Analytics tracked
 
 2. **Booking Flow**
+
    - User clicks tour → Navigation → Detail page → Booking modal → Local storage
 
 3. **Search Flow**
@@ -130,16 +134,19 @@ Analytics Tracking
 ### Implemented Optimizations
 
 1. **React Query Caching**
+
    - 5-minute stale time for tour data
    - Automatic background refetching
    - Optimistic updates
 
 2. **Component Memoization**
+
    - useMemo for expensive calculations
    - useCallback for event handlers
    - React.memo for pure components
 
 3. **Code Splitting**
+
    - Route-based lazy loading
    - Dynamic imports for heavy components
 
@@ -160,10 +167,12 @@ Analytics Tracking
 ### Implemented Security Measures
 
 1. **Input Validation**
+
    - Form validation with proper sanitization
    - TypeScript type checking at compile time
 
 2. **XSS Prevention**
+
    - React's built-in XSS protection
    - Proper data sanitization
 
@@ -176,10 +185,12 @@ Analytics Tracking
 ### Horizontal Scaling Preparation
 
 1. **Modular Architecture**
+
    - Clear separation of concerns
    - Pluggable components and services
 
 2. **Configuration Management**
+
    - Environment-based configuration
    - Feature flags for A/B testing
 
@@ -191,10 +202,12 @@ Analytics Tracking
 ### Future Scalability Considerations
 
 1. **Micro-frontend Architecture**
+
    - Component library extraction
    - Independent deployment cycles
 
 2. **CDN Integration**
+
    - Static asset distribution
    - Edge computing for performance
 
@@ -207,11 +220,13 @@ Analytics Tracking
 ### Code Quality Standards
 
 1. **TypeScript Strict Mode**
+
    - Full type coverage
    - Strict null checks
    - No implicit any
 
 2. **ESLint + Prettier**
+
    - Consistent code formatting
    - Best practice enforcement
 
@@ -223,6 +238,7 @@ Analytics Tracking
 ### Deployment Pipeline
 
 1. **Build Optimization**
+
    - Tree shaking for unused code
    - Bundle analysis and optimization
    - Progressive enhancement

@@ -23,7 +23,8 @@ export default function TourCard({ tour }: TourCardProps) {
   const [imageError, setImageError] = useState(false);
 
   // Default fallback image
-  const defaultImage = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop&crop=center";
+  const defaultImage =
+    "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop&crop=center";
 
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -35,7 +36,7 @@ export default function TourCard({ tour }: TourCardProps) {
       tourTitle: tour.title,
       price: tour.discountedPrice,
       duration: tour.duration,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   };
 
@@ -46,7 +47,7 @@ export default function TourCard({ tour }: TourCardProps) {
       tourTitle: tour.title,
       price: tour.discountedPrice,
       duration: tour.duration,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   };
 
@@ -81,7 +82,9 @@ export default function TourCard({ tour }: TourCardProps) {
       </div>
 
       <div className="p-4">
-        <h3 className="font-semibold text-gray-900 text-lg mb-2">{tour.title}</h3>
+        <h3 className="font-semibold text-gray-900 text-lg mb-2">
+          {tour.title}
+        </h3>
         <p className="text-gray-600 text-sm mb-3">{tour.description}</p>
 
         <div className="flex items-center text-gray-500 text-sm mb-4">
