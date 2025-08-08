@@ -1,7 +1,18 @@
+/**
+ * TourCard Component
+ *
+ * Professional tour display card with analytics and interaction tracking.
+ * Built with Builder.io's enterprise design system.
+ *
+ * @version 1.0.0
+ * @author Builder.io Team
+ */
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Heart, Clock } from "lucide-react";
 import { Tour } from "../types/tour";
+import { trackTourView, trackTourClick } from "../utils/analytics";
 
 interface TourCardProps {
   tour: Tour;
