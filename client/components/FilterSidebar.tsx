@@ -17,8 +17,9 @@ export default function FilterSidebar({ onDurationChange, onPriceChange, isOpen 
 
   return (
     <div className={`w-64 ${isOpen ? 'block' : 'hidden'} md:block`}>
-      <h2 className="text-lg font-semibold text-gray-900 mb-4 ml-6">Criteria</h2>
-      <div className="bg-white p-6 border-r border-gray-200 ml-6">
+      <div className="sticky top-6">
+        <h2 className="text-lg font-semibold text-gray-900 mb-4 ml-6">Criteria</h2>
+        <div className="bg-white p-6 border-r border-gray-200 ml-6">
         {/* Duration Filter */}
         <div className="mb-6">
           <button
@@ -85,6 +86,7 @@ export default function FilterSidebar({ onDurationChange, onPriceChange, isOpen 
               />
             </div>
           )}
+        </div>
         </div>
       </div>
     </div>
