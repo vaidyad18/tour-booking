@@ -20,6 +20,10 @@ interface TourCardProps {
 
 export default function TourCard({ tour }: TourCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(tour.wishlist || false);
+  const [imageError, setImageError] = useState(false);
+
+  // Default fallback image
+  const defaultImage = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&h=300&fit=crop&crop=center";
 
   const toggleWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
