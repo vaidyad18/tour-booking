@@ -36,7 +36,7 @@ export default function Header() {
               </div>
               <div className="flex flex-col">
                 <div className="flex items-baseline">
-                  <span className="text-gray-900 font-bold text-base tracking-tight">
+                  <span className="text-gray-900 font-medium text-base tracking-tight">
                     map
                   </span>
                   <span className="text-gray-900 font-medium text-base ml-1">
