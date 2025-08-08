@@ -90,33 +90,16 @@ export default function FilterSidebar({ onDurationChange, onPriceChange, isOpen 
               <span>$0</span>
               <span>$5000</span>
             </div>
-            <div className="relative">
-              <div className="w-full h-2 bg-gray-200 rounded">
-                <div
-                  className="h-2 bg-red-500 rounded"
-                  style={{
-                    marginLeft: `${(priceRange.min / 5000) * 100}%`,
-                    width: `${((priceRange.max - priceRange.min) / 5000) * 100}%`
-                  }}
-                />
-              </div>
-              <input
-                type="range"
-                min="0"
-                max="5000"
-                value={priceRange.min}
-                onChange={(e) => handlePriceChange('min', parseInt(e.target.value))}
-                className="absolute top-0 w-full h-2 opacity-0 cursor-pointer"
-              />
-              <input
-                type="range"
-                min="0"
-                max="5000"
-                value={priceRange.max}
-                onChange={(e) => handlePriceChange('max', parseInt(e.target.value))}
-                className="absolute top-0 w-full h-2 opacity-0 cursor-pointer"
-              />
-            </div>
+            <DualRangeSlider
+              min={0}
+              max={5000}
+              value={[priceRange.min, priceRange.max]}
+              onChange={([min, max]) => {
+                setPriceRange({ min, max });
+                onPriceChange(min, max);
+              }}
+              step={50}
+            />
           </div>
         )}
       </div>
