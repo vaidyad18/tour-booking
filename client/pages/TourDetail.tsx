@@ -154,21 +154,21 @@ export default function TourDetail() {
           </div>
 
           <div className="p-6">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 space-y-4 lg:space-y-0">
               <div className="flex items-center space-x-4">
                 <div className="flex items-center text-gray-500">
                   <Clock className="w-5 h-5 mr-2" />
                   <span>{tour.duration}</span>
                 </div>
               </div>
-              
-              <div className="flex items-center space-x-6">
-                <div className="text-right">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-3xl font-bold text-gray-900">
+
+              <div className="flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <div className="text-left sm:text-right">
+                  <div className="flex flex-wrap items-center space-x-2">
+                    <span className="text-2xl sm:text-3xl font-bold text-gray-900">
                       ${tour.discountedPrice}
                     </span>
-                    <span className="text-lg text-gray-500 line-through">
+                    <span className="text-base sm:text-lg text-gray-500 line-through">
                       ${tour.actualPrice}
                     </span>
                     <span className="bg-red-500 text-white text-sm px-2 py-1 rounded">
@@ -177,10 +177,10 @@ export default function TourDetail() {
                   </div>
                   <p className="text-sm text-gray-500">per person</p>
                 </div>
-                
+
                 <button
                   onClick={() => setIsBookingModalOpen(true)}
-                  className="bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                  className="bg-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-600 transition-colors w-full sm:w-auto"
                 >
                   Book Now
                 </button>
