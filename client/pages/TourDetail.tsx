@@ -189,7 +189,7 @@ export default function TourDetail() {
 
             {/* Tabs */}
             <div className="border-b border-gray-200 mb-6">
-              <nav className="flex space-x-8">
+              <nav className="flex space-x-4 sm:space-x-8 overflow-x-auto">
                 {[
                   { key: "overview", label: "Overview" },
                   { key: "itinerary", label: "Itinerary" },
@@ -198,7 +198,7 @@ export default function TourDetail() {
                   <button
                     key={tab.key}
                     onClick={() => setActiveTab(tab.key as typeof activeTab)}
-                    className={`py-2 px-1 border-b-2 font-medium text-sm ${
+                    className={`py-2 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
                       activeTab === tab.key
                         ? "border-red-500 text-red-600"
                         : "border-transparent text-gray-500 hover:text-gray-700"
