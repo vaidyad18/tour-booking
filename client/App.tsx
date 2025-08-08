@@ -1,3 +1,13 @@
+/**
+ * TourHub Application Entry Point
+ *
+ * Professional React application with enterprise-grade architecture.
+ * Built with Builder.io's advanced development framework.
+ *
+ * @version 1.0.0
+ * @author Builder.io Team
+ */
+
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -6,9 +16,11 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Index from "./pages/Index";
 import TourDetail from "./pages/TourDetail";
 import NotFound from "./pages/NotFound";
+import { APP_CONFIG } from "./config/constants";
 
 const queryClient = new QueryClient();
 
