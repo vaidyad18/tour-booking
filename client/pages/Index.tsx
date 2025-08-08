@@ -151,7 +151,7 @@ export default function Index() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <div className="flex relative">
         <div className={`${isFilterOpen ? 'fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden' : ''}`} onClick={() => setIsFilterOpen(false)} />
         <div className={`${isFilterOpen ? 'fixed left-0 top-0 z-50 h-full overflow-y-auto' : 'hidden'} md:relative md:block`}>
@@ -163,7 +163,7 @@ export default function Index() {
           />
         </div>
 
-        <div className="flex-1 p-4 md:p-6">
+        <div className="flex-1 p-6">
           {/* Search and Sort Bar */}
           <div className="mb-6">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4">
