@@ -11,6 +11,10 @@ export default function TourDetail() {
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<"overview" | "itinerary" | "inclusions">("overview");
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Default fallback image
+  const defaultImage = "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=400&fit=crop&crop=center";
 
   useEffect(() => {
     fetchTourDetail();
