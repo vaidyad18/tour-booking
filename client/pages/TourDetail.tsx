@@ -151,8 +151,9 @@ export default function TourDetail() {
           {/* Hero Image */}
           <div className="relative h-96">
             <img
-              src={tour.image}
+              src={imageError ? defaultImage : tour.image}
               alt={tour.title}
+              onError={handleImageError}
               className="w-full h-full object-cover"
             />
             <div className="absolute bottom-6 left-6 text-white">
