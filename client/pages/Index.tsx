@@ -83,8 +83,12 @@ export default function Index() {
         <Header />
         <div className="flex items-center justify-center min-h-[50vh]">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500 mx-auto mb-4"></div>
-            <p className="text-gray-600">Loading tours...</p>
+            <div className="relative">
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-4 border-red-500 border-t-transparent absolute top-0 left-1/2 transform -translate-x-1/2"></div>
+            </div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">Loading Amazing Tours</h3>
+            <p className="text-gray-600">Discovering the world's best destinations...</p>
           </div>
         </div>
       </div>
