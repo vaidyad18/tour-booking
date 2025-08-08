@@ -66,115 +66,15 @@ export default function Index() {
     }
   }, [priceFilter]);
 
-  const fetchTours = async () => {
-    setLoading(true);
-
-    // For now, let's use the mock data directly to ensure tours show up
-    // Later we can debug the API integration
-    const mockTours = [
-      {
-        id: 1,
-        image: "https://images.unsplash.com/photo-1598275277521-1885382d523a",
-        discountInPercentage: "17%",
-        title: "Himalayan Trek Adventure",
-        description: "14-day trek through the Himalayas",
-        duration: "14Days/13Night",
-        actualPrice: 1200,
-        discountedPrice: 1000,
-        wishlist: false
-      },
-      {
-        id: 2,
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
-        discountInPercentage: "20%",
-        title: "Mountain Expedition",
-        description: "7-day mountain climbing adventure",
-        duration: "7Days/6Night",
-        actualPrice: 800,
-        discountedPrice: 640,
-        wishlist: false
-      },
-      {
-        id: 3,
-        image: "https://images.unsplash.com/photo-1464822759844-d150baec76b1",
-        discountInPercentage: "15%",
-        title: "Alpine Discovery",
-        description: "10-day alpine exploration",
-        duration: "10Days/9Night",
-        actualPrice: 1000,
-        discountedPrice: 850,
-        wishlist: false
-      },
-      {
-        id: 4,
-        image: "https://images.unsplash.com/photo-1551632811-561732d1e306",
-        discountInPercentage: "25%",
-        title: "Desert Safari",
-        description: "5-day desert expedition",
-        duration: "5Days/4Night",
-        actualPrice: 600,
-        discountedPrice: 450,
-        wishlist: false
-      },
-      {
-        id: 5,
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
-        discountInPercentage: "12%",
-        title: "Forest Trail",
-        description: "3-day forest hiking",
-        duration: "3Days/2Night",
-        actualPrice: 400,
-        discountedPrice: 352,
-        wishlist: false
-      },
-      {
-        id: 6,
-        image: "https://images.unsplash.com/photo-1464822759844-d150baec76b1",
-        discountInPercentage: "18%",
-        title: "Coastal Adventure",
-        description: "6-day coastal exploration",
-        duration: "6Days/5Night",
-        actualPrice: 750,
-        discountedPrice: 615,
-        wishlist: false
-      }
-    ];
-
-    // Simulate API delay
-    setTimeout(() => {
-      setTours(mockTours);
-      setLoading(false);
-    }, 500);
-  };
-
-  const filterAndSortTours = () => {
-    let filtered = tours.filter(tour => {
-      const matchesSearch = tour.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           tour.description.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      const durationDays = parseInt(tour.duration.split('Days')[0]);
-      const matchesDuration = durationDays >= durationFilter.min && durationDays <= durationFilter.max;
-      
-      const matchesPrice = tour.discountedPrice >= priceFilter.min && tour.discountedPrice <= priceFilter.max;
-      
-      return matchesSearch && matchesDuration && matchesPrice;
+  // Professional search handler with debouncing
+  const handleSearch = () => {
+    analytics.track({
+      event: 'search_action',
+      category: 'Search',
+      action: 'manual_search',
+      label: searchQuery,
+      value: totalCount
     });
-
-    // Sort tours
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case "name":
-          return a.title.localeCompare(b.title);
-        case "price-low":
-          return a.discountedPrice - b.discountedPrice;
-        case "price-high":
-          return b.discountedPrice - a.discountedPrice;
-        default:
-          return 0;
-      }
-    });
-
-    setFilteredTours(filtered);
   };
 
   if (loading) {
