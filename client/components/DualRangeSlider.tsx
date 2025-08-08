@@ -88,7 +88,7 @@ export default function DualRangeSlider({
       >
         {/* Active range */}
         <div
-          className="absolute h-2 bg-red-500 rounded"
+          className="absolute h-2 bg-gradient-to-r from-red-500 to-red-600 rounded transition-all duration-300 shadow-sm hover:shadow-md"
           style={{
             left: `${minPosition}%`,
             width: `${maxPosition - minPosition}%`
