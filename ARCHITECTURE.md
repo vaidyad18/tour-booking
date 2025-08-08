@@ -1,7 +1,6 @@
 # 🏗️ TourHub Architecture Documentation
 
 **Enterprise-Grade Tour Booking Platform**  
-_Built with Builder.io's Advanced Development Framework_
 
 ## 📋 Table of Contents
 
@@ -249,6 +248,3 @@ Analytics Tracking
 
 ---
 
-**Built with ❤️ by the Builder.io Team**
-
-For more architectural patterns and best practices, visit [builder.io/docs](https://www.builder.io/c/docs)
