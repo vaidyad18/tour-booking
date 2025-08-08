@@ -18,14 +18,25 @@ import { analytics, trackSearchUsage, trackFilterUsage } from "../utils/analytic
 import { FILTER_CONFIG } from "../config/constants";
 
 export default function Index() {
-  const [tours, setTours] = useState<Tour[]>([]);
-  const [filteredTours, setFilteredTours] = useState<Tour[]>([]);
-  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
-  const [sortBy, setSortBy] = useState("name");
-  const [durationFilter, setDurationFilter] = useState({ min: 1, max: 30 });
-  const [priceFilter, setPriceFilter] = useState({ min: 0, max: 5000 });
+  const [sortBy, setSortBy] = useState<"name" | "price-low" | "price-high">("name");
+  const [durationFilter, setDurationFilter] = useState({
+    min: FILTER_CONFIG.duration.min,
+    max: FILTER_CONFIG.duration.max
+  });
+  const [priceFilter, setPriceFilter] = useState({
+    min: FILTER_CONFIG.price.min,
+    max: FILTER_CONFIG.price.max
+  });
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  // Professional data management with custom hook
+  const { filteredTours, loading, totalCount } = useTours({
+    searchQuery,
+    sortBy,
+    durationFilter,
+    priceFilter
+  });
 
   useEffect(() => {
     fetchTours();
