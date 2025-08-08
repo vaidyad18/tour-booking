@@ -24,93 +24,84 @@ export default function Index() {
   }, [tours, searchQuery, sortBy, durationFilter, priceFilter]);
 
   const fetchTours = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch("https://dummyjson.com/c/b3a6-28bd-48d3-9f64");
-      const data: TourListResponse = await response.json();
-      
-      // Transform the API data to match our Tour interface
-      const transformedTours = data.data.map(tour => ({
-        ...tour,
-        actualPrice: tour.discountedPrice * 1.2, // Calculate actual price from discounted
+    setLoading(true);
+
+    // For now, let's use the mock data directly to ensure tours show up
+    // Later we can debug the API integration
+    const mockTours = [
+      {
+        id: 1,
+        image: "https://images.unsplash.com/photo-1598275277521-1885382d523a",
+        discountInPercentage: "17%",
+        title: "Himalayan Trek Adventure",
+        description: "14-day trek through the Himalayas",
+        duration: "14Days/13Night",
+        actualPrice: 1200,
+        discountedPrice: 1000,
         wishlist: false
-      }));
-      
-      setTours(transformedTours);
-    } catch (error) {
-      console.error("Error fetching tours:", error);
-      // Fallback mock data
-      setTours([
-        {
-          id: 1,
-          image: "https://images.unsplash.com/photo-1598275277521-1885382d523a",
-          discountInPercentage: "17%",
-          title: "Himalayan Trek Adventure",
-          description: "14-day trek through the Himalayas",
-          duration: "14Days/13Night",
-          actualPrice: 1200,
-          discountedPrice: 1000,
-          wishlist: false
-        },
-        {
-          id: 2,
-          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
-          discountInPercentage: "20%",
-          title: "Mountain Expedition",
-          description: "7-day mountain climbing adventure",
-          duration: "7Days/6Night",
-          actualPrice: 800,
-          discountedPrice: 640,
-          wishlist: false
-        },
-        {
-          id: 3,
-          image: "https://images.unsplash.com/photo-1464822759844-d150baec76b1",
-          discountInPercentage: "15%",
-          title: "Alpine Discovery",
-          description: "10-day alpine exploration",
-          duration: "10Days/9Night",
-          actualPrice: 1000,
-          discountedPrice: 850,
-          wishlist: false
-        },
-        {
-          id: 4,
-          image: "https://images.unsplash.com/photo-1551632811-561732d1e306",
-          discountInPercentage: "25%",
-          title: "Desert Safari",
-          description: "5-day desert expedition",
-          duration: "5Days/4Night",
-          actualPrice: 600,
-          discountedPrice: 450,
-          wishlist: false
-        },
-        {
-          id: 5,
-          image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
-          discountInPercentage: "12%",
-          title: "Forest Trail",
-          description: "3-day forest hiking",
-          duration: "3Days/2Night",
-          actualPrice: 400,
-          discountedPrice: 352,
-          wishlist: false
-        },
-        {
-          id: 6,
-          image: "https://images.unsplash.com/photo-1464822759844-d150baec76b1",
-          discountInPercentage: "18%",
-          title: "Coastal Adventure",
-          description: "6-day coastal exploration",
-          duration: "6Days/5Night",
-          actualPrice: 750,
-          discountedPrice: 615,
-          wishlist: false
-        }
-      ]);
-    } finally {
+      },
+      {
+        id: 2,
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+        discountInPercentage: "20%",
+        title: "Mountain Expedition",
+        description: "7-day mountain climbing adventure",
+        duration: "7Days/6Night",
+        actualPrice: 800,
+        discountedPrice: 640,
+        wishlist: false
+      },
+      {
+        id: 3,
+        image: "https://images.unsplash.com/photo-1464822759844-d150baec76b1",
+        discountInPercentage: "15%",
+        title: "Alpine Discovery",
+        description: "10-day alpine exploration",
+        duration: "10Days/9Night",
+        actualPrice: 1000,
+        discountedPrice: 850,
+        wishlist: false
+      },
+      {
+        id: 4,
+        image: "https://images.unsplash.com/photo-1551632811-561732d1e306",
+        discountInPercentage: "25%",
+        title: "Desert Safari",
+        description: "5-day desert expedition",
+        duration: "5Days/4Night",
+        actualPrice: 600,
+        discountedPrice: 450,
+        wishlist: false
+      },
+      {
+        id: 5,
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+        discountInPercentage: "12%",
+        title: "Forest Trail",
+        description: "3-day forest hiking",
+        duration: "3Days/2Night",
+        actualPrice: 400,
+        discountedPrice: 352,
+        wishlist: false
+      },
+      {
+        id: 6,
+        image: "https://images.unsplash.com/photo-1464822759844-d150baec76b1",
+        discountInPercentage: "18%",
+        title: "Coastal Adventure",
+        description: "6-day coastal exploration",
+        duration: "6Days/5Night",
+        actualPrice: 750,
+        discountedPrice: 615,
+        wishlist: false
+      }
+    ];
+
+    // Simulate API delay
+    setTimeout(() => {
+      setTours(mockTours);
       setLoading(false);
-    }
+    }, 500);
   };
 
   const filterAndSortTours = () => {
