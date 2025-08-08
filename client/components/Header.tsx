@@ -10,9 +10,14 @@ export default function Header() {
           <Link to="/" className="flex items-center">
             <div className="flex items-center">
               <div className="relative">
-                <svg width="32" height="32" viewBox="0 0 32 32" className="mr-2">
+                <svg
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  className="mr-2"
+                >
                   {/* Red background square */}
-                  <rect width="32" height="32" rx="2" fill="#EF4444"/>
+                  <rect width="32" height="32" rx="2" fill="#EF4444" />
                   {/* Map icon */}
                   <path
                     d="M8 12L12 10L20 12L24 10V22L20 24L12 22L8 24V12Z"
