@@ -130,7 +130,10 @@ export default function Index() {
                   className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent w-full"
                 />
               </div>
-              <button className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors whitespace-nowrap font-medium">
+              <button
+                onClick={handleSearch}
+                className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors whitespace-nowrap font-medium"
+              >
                 Search
               </button>
             </div>
