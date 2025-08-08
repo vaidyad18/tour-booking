@@ -165,8 +165,8 @@ export default function Index() {
 
         <div className="flex-1 p-4 md:p-6">
           {/* Search and Sort Bar */}
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-6 space-y-4 lg:space-y-0">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="mb-6">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-4">
               <button
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
                 className="md:hidden bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
@@ -183,12 +183,12 @@ export default function Index() {
                   className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent w-full"
                 />
               </div>
-              <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors whitespace-nowrap">
+              <button className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors whitespace-nowrap font-medium">
                 Search
               </button>
             </div>
 
-            <div className="flex items-center justify-between lg:justify-end space-x-4">
+            <div className="flex items-center justify-between">
               <span className="text-gray-600 text-sm">
                 {filteredTours.length} tours found
               </span>
@@ -196,7 +196,7 @@ export default function Index() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                  className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 focus:ring-2 focus:ring-red-500 focus:border-transparent text-sm"
                 >
                   <option value="name">Name (A-Z)</option>
                   <option value="price-low">Price (Low to High)</option>
