@@ -32,7 +32,7 @@ export default function FilterSidebar({ onDurationChange, onPriceChange, isOpen 
   };
 
   return (
-    <div className="w-64 bg-white p-6 border-r border-gray-200">
+    <div className={`w-64 bg-white p-6 border-r border-gray-200 ${isOpen ? 'block' : 'hidden'} md:block`}>
       <h2 className="text-lg font-semibold text-gray-900 mb-6">Criteria</h2>
       
       {/* Duration Filter */}
