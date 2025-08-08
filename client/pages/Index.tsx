@@ -38,13 +38,33 @@ export default function Index() {
     priceFilter
   });
 
+  // Track page view on mount
   useEffect(() => {
-    fetchTours();
+    analytics.trackPageView('/', 'Tour Listings');
   }, []);
 
+  // Track search usage
   useEffect(() => {
-    filterAndSortTours();
-  }, [tours, searchQuery, sortBy, durationFilter, priceFilter]);
+    if (searchQuery) {
+      const timeoutId = setTimeout(() => {
+        trackSearchUsage(searchQuery, totalCount);
+      }, 500);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [searchQuery, totalCount]);
+
+  // Track filter usage
+  useEffect(() => {
+    if (durationFilter.min !== FILTER_CONFIG.duration.min || durationFilter.max !== FILTER_CONFIG.duration.max) {
+      trackFilterUsage('duration', `${durationFilter.min}-${durationFilter.max}`);
+    }
+  }, [durationFilter]);
+
+  useEffect(() => {
+    if (priceFilter.min !== FILTER_CONFIG.price.min || priceFilter.max !== FILTER_CONFIG.price.max) {
+      trackFilterUsage('price', `${priceFilter.min}-${priceFilter.max}`);
+    }
+  }, [priceFilter]);
 
   const fetchTours = async () => {
     setLoading(true);
