@@ -20,17 +20,6 @@ export default function FilterSidebar({ onDurationChange, onPriceChange, isOpen 
   const [durationRange, setDurationRange] = useState({ min: 1, max: 30 });
   const [priceRange, setPriceRange] = useState({ min: 0, max: 5000 });
 
-  const handleDurationChange = (type: 'min' | 'max', value: number) => {
-    const newRange = { ...durationRange, [type]: value };
-    setDurationRange(newRange);
-    onDurationChange(newRange.min, newRange.max);
-  };
-
-  const handlePriceChange = (type: 'min' | 'max', value: number) => {
-    const newRange = { ...priceRange, [type]: value };
-    setPriceRange(newRange);
-    onPriceChange(newRange.min, newRange.max);
-  };
 
   return (
     <div className={`w-64 bg-white p-6 border-r border-gray-200 ${isOpen ? 'block' : 'hidden'} md:block`}>
