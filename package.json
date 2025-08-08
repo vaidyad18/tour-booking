@@ -34,8 +34,18 @@
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
     "test": "vitest --run",
-    "format.fix": "prettier --write .",
-    "typecheck": "tsc"
+    "test:watch": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "typecheck:watch": "tsc --noEmit --watch",
+    "analyze": "npm run build:client && npx vite-bundle-analyzer dist/spa",
+    "preview": "vite preview",
+    "docker:build": "docker build -t tourhub-builder-io .",
+    "docker:run": "docker run -p 8080:8080 tourhub-builder-io"
   },
   "dependencies": {
     "dotenv": "^17.2.0",
