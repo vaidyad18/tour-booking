@@ -20,6 +20,10 @@ export default function TourDetail() {
     fetchTourDetail();
   }, [id]);
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   const fetchTourDetail = async () => {
     try {
       setLoading(true);
